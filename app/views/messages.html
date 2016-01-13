@@ -1,0 +1,7 @@
+<div ng-show="messages.success.length > 0" class="alert alert-success">
+  <ul ng-repeat="s in messages.success"><li>{{s}}</li></ul>
+</div>
+
+<div ng-show="messages.error.length > 0" class="alert alert-danger">
+  <ul ng-repeat="e in messages.error"><li>{{e}}</li></ul>
+</div>
