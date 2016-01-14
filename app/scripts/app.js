@@ -22,42 +22,66 @@ angular
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
-        controllerAs: 'main'
+        controllerAs: 'main',
+         access: {
+            requiredPermissions: []
+        }
       })
       .when('/consultardatosempleado', {
         templateUrl: 'views/consultardatosempleado.html',
         controller: 'ConsultardatosempleadoCtrl',
-        controllerAs: 'consultardatosempleado'
+        controllerAs: 'consultardatosempleado',
+        access: {
+            requiredPermissions: ['Administrador','Recursos Humanos']
+        }
       })
       .when('/actualizardatospersonales', {
         templateUrl: 'views/actualizardatospersonales.html',
         controller: 'ActualizardatospersonalesCtrl',
-        controllerAs: 'actualizardatospersonales'
+        controllerAs: 'actualizardatospersonales',
+        access: {
+            requiredPermissions: ['Administrador','Recursos Humanos','Empleado']
+        }
       })
       .when('/actualizardatosprofesionales', {
         templateUrl: 'views/actualizardatosprofesionales.html',
         controller: 'ActualizardatosprofesionalesCtrl',
-        controllerAs: 'actualizardatosprofesionales'
+        controllerAs: 'actualizardatosprofesionales',
+        access: {
+             requiredPermissions: ['Administrador','Recursos Humanos','Empleado']
+        }
       })
       .when('/solicitarvacaciones', {
         templateUrl: 'views/solicitarvacaciones.html',
         controller: 'SolicitarvacacionesCtrl',
-        controllerAs: 'solicitarvacaciones'
+        controllerAs: 'solicitarvacaciones',
+        access: {
+             requiredPermissions: ['Administrador','Recursos Humanos','Empleado']
+        }
       })
       .when('/historialvacaciones', {
         templateUrl: 'views/historialvacaciones.html',
         controller: 'HistorialvacacionesCtrl',
-        controllerAs: 'historialvacaciones'
+        controllerAs: 'historialvacaciones',
+        access: {
+             requiredPermissions: ['Administrador','Recursos Humanos','Empleado']
+        }
       })
       .when('/historialpagos', {
         templateUrl: 'views/historialpagos.html',
         controller: 'HistorialpagosCtrl',
-        controllerAs: 'historialpagos'
+        controllerAs: 'historialpagos',
+        access: {
+             requiredPermissions: ['Administrador','Recursos Humanos','Empleado']
+        }
       })
       .when('/generardocumentos', {
         templateUrl: 'views/generardocumentos.html',
         controller: 'GenerardocumentosCtrl',
-        controllerAs: 'generardocumentos'
+        controllerAs: 'generardocumentos',
+        access: {
+             requiredPermissions: ['Administrador']
+        }
       })
       .when('/message', {
         templateUrl: 'views/message.html',

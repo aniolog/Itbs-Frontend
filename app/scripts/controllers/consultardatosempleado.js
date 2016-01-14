@@ -22,7 +22,6 @@ angular.module('intranetFrontEndApp')
           {nombre:"Carlos",apellido:"Pires",cedula:"9",datos:"test"}];
 
       this.setempleado=function(empleado){
-        console.log(empleado);
         this.empleadoseleccionado=empleado;
       }
   });

@@ -6,6 +6,9 @@
     function UserService($http, BASE_URL) {
         var userLogged = false; // Not using rootScope because this object will be a singleton by definition
         var userData={};
+        var Users=[];
+
+
 
         this.logout = function(){
           userLogged = false;
@@ -18,7 +21,7 @@
 
             var getProfile=function(){
                 var MyData=[];
-                $http.get(BASE_URL + '/usuarios/perfil?$select=Correo,ModeloVehiculo,ColorVehiculo,AnoVehiculo,PlacaVehiculo,CorreoPersonal').success(function(data){                    
+                $http.get(BASE_URL + '/usuarios/perfil?$expand=Rol').success(function(data){                    
                     userData=data[0];                   
                 });                
             };
@@ -57,6 +60,13 @@
         	}).then(success, error).then(getProfile);
         };
 
+        this.getUsers=function(){
+
+            $http.get(BASE_URL + '/usuarios').success(function (data){
+
+                Users=data;
+            });
+        }
 
         this.isUserLogged = function() {
             return userLogged;
@@ -69,5 +79,9 @@
         this.getUserData = function() {
             return userData;
         };
+
+        this.getUsersList=function(){
+            return Users;
+        }
       }
     })();

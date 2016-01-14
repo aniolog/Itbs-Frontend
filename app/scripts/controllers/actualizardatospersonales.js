@@ -7,11 +7,12 @@
  * # ActualizardatospersonalesCtrl
  * Controller of the intranetFrontEndApp
  */
-angular.module('intranetFrontEndApp')
-  .controller('ActualizardatospersonalesCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+angular.module('intranetFrontEndApp').controller('ActualizardatospersonalesCtrl','$scope',[ActualizardatospersonalesCtrl]);
+
+function ActualizardatospersonalesCtrl($scope){
+
+	this.init=function(){
+		alert('inicio actualizar datos personales');
+	}
+
+}

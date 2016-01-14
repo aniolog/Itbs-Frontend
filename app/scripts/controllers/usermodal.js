@@ -8,13 +8,9 @@
  * Controller of the intranetFrontEndApp
  */
 angular.module('intranetFrontEndApp')
-  .controller('UsermodalCtrl',['$scope',Controller]);
+  .controller('UsermodalCtrl',['$scope','UserService',Controller]);
 
 
-function Controller($scope){
-	$scope.$watch('$scope.usuario',function(){
-		alert('cambio');
-		console.log($scope.usuario);
-	});
-	
+function Controller($scope,userService){
+
 };

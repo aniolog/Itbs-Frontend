@@ -8,10 +8,22 @@
  * Controller of the intranetFrontEndApp
  */
 angular.module('intranetFrontEndApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('MainCtrl',  ['$scope', 'UserService', MainCtrl]);
+
+function MainCtrl($scope,userService){
+
+	this.getUsers=function(){
+		return userService.getUsersList();
+	}
+
+	this.init=function(){
+		userService.getUsers();
+	}
+
+	this.user=function(){
+		console.log(userService.getUserData());
+		return userService.getUserData();
+	}
+
+
+}
