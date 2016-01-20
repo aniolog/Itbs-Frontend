@@ -24,7 +24,8 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main',
          access: {
-            requiredPermissions: []
+            requiredPermissions: [],
+            requireLogin:false
         }
       })
       .when('/consultardatosempleado', {
@@ -32,7 +33,8 @@ angular
         controller: 'ConsultardatosempleadoCtrl',
         controllerAs: 'consultardatosempleado',
         access: {
-            requiredPermissions: ['Administrador','Recursos Humanos']
+            requiredPermissions: ['Administrador','Recursos Humanos'],
+            requireLogin:true
         }
       })
       .when('/actualizardatospersonales', {
@@ -40,7 +42,8 @@ angular
         controller: 'ActualizardatospersonalesCtrl',
         controllerAs: 'actualizardatospersonales',
         access: {
-            requiredPermissions: ['Administrador','Recursos Humanos','Empleado']
+            requiredPermissions: ['Administrador','Recursos Humanos','Empleado'],
+            requireLogin:true
         }
       })
       .when('/actualizardatosprofesionales', {
@@ -48,7 +51,8 @@ angular
         controller: 'ActualizardatosprofesionalesCtrl',
         controllerAs: 'actualizardatosprofesionales',
         access: {
-             requiredPermissions: ['Administrador','Recursos Humanos','Empleado']
+             requiredPermissions: ['Administrador','Recursos Humanos','Empleado'],
+             requireLogin:true
         }
       })
       .when('/solicitarvacaciones', {
@@ -56,7 +60,8 @@ angular
         controller: 'SolicitarvacacionesCtrl',
         controllerAs: 'solicitarvacaciones',
         access: {
-             requiredPermissions: ['Administrador','Recursos Humanos','Empleado']
+             requiredPermissions: ['Administrador','Recursos Humanos','Empleado'],
+             requireLogin:true
         }
       })
       .when('/historialvacaciones', {
@@ -64,7 +69,8 @@ angular
         controller: 'HistorialvacacionesCtrl',
         controllerAs: 'historialvacaciones',
         access: {
-             requiredPermissions: ['Administrador','Recursos Humanos','Empleado']
+             requiredPermissions: ['Administrador','Recursos Humanos','Empleado'],
+             requireLogin:true
         }
       })
       .when('/historialpagos', {
@@ -72,7 +78,8 @@ angular
         controller: 'HistorialpagosCtrl',
         controllerAs: 'historialpagos',
         access: {
-             requiredPermissions: ['Administrador','Recursos Humanos','Empleado']
+             requiredPermissions: ['Administrador','Recursos Humanos','Empleado'],
+             requireLogin:true
         }
       })
       .when('/generardocumentos', {
@@ -80,13 +87,18 @@ angular
         controller: 'GenerardocumentosCtrl',
         controllerAs: 'generardocumentos',
         access: {
-             requiredPermissions: ['Administrador']
+             requiredPermissions: ['Administrador'],
+             requireLogin:true
         }
       })
-      .when('/message', {
-        templateUrl: 'views/message.html',
-        controller: 'MessageCtrl',
-        controllerAs: 'message'
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'login',
+        access: {
+             requiredPermissions: [],
+             requireLogin:false
+        }
       })
       .otherwise({
         redirectTo: '/'

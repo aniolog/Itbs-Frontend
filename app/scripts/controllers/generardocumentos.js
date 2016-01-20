@@ -22,7 +22,6 @@ angular.module('intranetFrontEndApp')
 
     this.setempleado=function(empleado){
             this.empleadoseleccionado=empleado;
-            alert(empleado.nombre);
           }
 
 

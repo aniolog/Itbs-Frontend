@@ -8,20 +8,19 @@
  * Controller of the intranetFrontEndApp
  */
 angular.module('intranetFrontEndApp')
-  .controller('MainCtrl',  ['$scope', 'UserService', MainCtrl]);
+  .controller('MainCtrl',  ['$scope', 'UserService','EmpleadoService', MainCtrl]);
 
-function MainCtrl($scope,userService){
+function MainCtrl($scope,userService,empleadoService){
 
-	this.getUsers=function(){
-		return userService.getUsersList();
+	this.getEmpleados=function(){
+		return empleadoService.getEmpleadosList();
 	}
 
 	this.init=function(){
-		userService.getUsers();
+		empleadoService.getEmpleados();
 	}
 
 	this.user=function(){
-		console.log(userService.getUserData());
 		return userService.getUserData();
 	}
 

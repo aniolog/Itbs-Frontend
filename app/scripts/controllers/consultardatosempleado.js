@@ -7,21 +7,27 @@
  * # ConsultardatosempleadoCtrl
  * Controller of the intranetFrontEndApp
  */
-angular.module('intranetFrontEndApp')
-  .controller('ConsultardatosempleadoCtrl', function () {
-    this.empleadoseleccionado=({});
-    this.empleados=[
-          {nombre:"Carlos",apellido:"Lozano",cedula:"1",datos:"test 01"},
-          {nombre:"Isaac",apellido:"Arismedi",cedula:"2",datos:"test 02"},
-          {nombre:"Eleana",apellido:"Torres",cedula:"3",datos:"test"},
-          {nombre:"Julio",apellido:"Fonseca",cedula:"4",datos:"test"},
-          {nombre:"Luis",apellido:"Depieri",cedula:"5",datos:"test"},
-          {nombre:"Sarah",apellido:"Darocha",cedula:"6",datos:"test"},
-          {nombre:"Carmen",apellido:"Bastardo",cedula:"7",datos:"test"},
-          {nombre:"Ali",apellido:"Briceño",cedula:"8",datos:"test"},
-          {nombre:"Carlos",apellido:"Pires",cedula:"9",datos:"test"}];
+angular.module('intranetFrontEndApp').controller('ConsultardatosempleadoCtrl',['EmpleadoService','UserService',ConsultardatosempleadoCtrl]);
 
-      this.setempleado=function(empleado){
-        this.empleadoseleccionado=empleado;
-      }
-  });
+function ConsultardatosempleadoCtrl(empleadoService,userService){
+  this.empleadoseleccionado={}
+
+  this.getUser=function(){
+    console.log(userService.getUserProfile());
+    return userService.getUserProfile();
+  }
+
+  this.getEmpledos=function(){
+    return empleadoService.getEmpleadosList();
+  }
+
+  this.init=function(){
+    empleadoService.getEmpleados();
+  }
+
+  this.setempleado=function(empleado){
+   userService.getUser(empleado.correo_e);
+   this.empleadoseleccionado=empleado;
+  }
+
+}

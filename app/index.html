@@ -40,6 +40,52 @@
 
             <ul class="nav navbar-top-links navbar-right">
 
+                <li class="dropdown" ng-show="usuario.rol.nombre=='Administrador'">
+                    <a class="dropdown-toggle" data-toggle="dropdown">
+                       <i class="fa fa-users"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-tasks " >
+                        <li>
+                            <a>
+                                <div>
+                                    <p>
+                                        <h4 class="text-center"><strong>Nuevo usuario</strong></h4>
+                                        <div class="divider"></div>
+                                         <form name="form" ng-submit="login.submitForm(form.$valid)" method="post" novalidate>
+                                         <fieldset>
+                                             <div class="form-group">
+                                        
+                                                <select class="form-control" name="color">
+                                                    <option value="">Choose a color</option>
+                                                    <option value="black">Black</option>
+                                                    <option value="green">Green</option>
+                                                    <option value="red">Red</option>
+                                                    <option value="yellow">Yellow</option>
+                                                    <option value="white">White</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="form-control" placeholder="Usuario LDAP" name="newemail" type="email" ng-value="" required >
+                                            </div>
+                            <!-- Change this to a button or input when using this as a form -->
+                                        
+                        </fieldset>
+                    </form>
+
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="text-center" >
+                                <strong>Agregar usuario</strong>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-money fa-fw"></i>  <i class="fa fa-caret-down"></i>
@@ -155,7 +201,7 @@
                     <ul class="nav" id="side-menu">
 
                         <!--Menu modulo de perfil de empleado-->
-                        <li class="active">
+                        <li >
                             <a><i class="fa fa-user fa-fw"></i> Perfil del empleado<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -277,6 +323,8 @@
     <script src="scripts/controllers/usermodal.js"></script>
     <script src="scripts/directives/usermodal.js"></script>
     <script src="scripts/services/empleado.js"></script>
+    <script src="scripts/directives/newuser.js"></script>
+    <script src="scripts/controllers/newuser.js"></script>
     <!-- endbuild -->
 </body>
 

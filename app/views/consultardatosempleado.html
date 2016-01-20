@@ -1,47 +1,84 @@
-<div class="row">
+<div class="row" ng-init="consultardatosempleado.init()">
               <div class="col-lg-12">
                   <h1 class="page-header">Perfil de empleados</h1>
               </div>
               <!-- /.col-lg-12 -->
 </div>
-          <!-- /.row -->
-</div>
-      <!-- /.container-fluid -->
-      <div class="row">
-          <div class="col-lg-12">
-              <div class="panel panel-default">
-                  <!-- /.panel-heading -->
-                  <div class="panel-body">
-                      <div class="dataTable_wrapper">
+</div></br>
 
-                          <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                              <thead>
-                                  <tr>
-                                      <th>Cedula</th>
-                                      <th>Nombre</th>
-                                      <th>Apellido</th>
-                                      <th>Acciones</th>
-                                  </tr>
-                              </thead>
-                              <tbody ng-repeat="empleado in consultardatosempleado.empleados">
-                                  <tr>
-                                      <td>{{empleado.cedula}}</td>
-                                      <td>{{empleado.nombre}}</td>
-                                      <td>{{empleado.apellido}}</td>
-                                      <td >
-                                            <button class="btn btn-success" data-toggle="modal" data-target="#usermodal" ng-click="consultardatosempleado.setempleado(empleado)">
-                                              Ver datos personales
-                                            </button>
+<div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+          <div class="panel-body">
+              <div class="dataTable_wrapper">
+                  <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                      <thead>
+                          <tr>
+                              <th>Cedula</th>
+                              <th>Nombre</th>
+                              <th>Apellido</th>
+                              <th>Acciones</th>
+                          </tr>
+                      </thead>
+                      <tbody ng-repeat="empleado in consultardatosempleado.getEmpledos()">
+                          <tr>
+                              <td>{{empleado.ci}}</td>
+                              <td>{{empleado.nombres}}</td>
+                              <td>{{empleado.apellidos}}</td>
+                              <td >
+                                    <button class="btn btn-success" data-toggle="modal" data-target="#empleadomodal" ng-click="consultardatosempleado.setempleado(empleado)">
+                                      Ver datos personales
+                                    </button>
+                              </td>
+                          </tr>
 
-                                      </td>
-                                  </tr>
-
-                              </tbody>
-                          </table>
-                      </div>
-
-                  </div>
+                      </tbody>
+                  </table>
               </div>
           </div>
-          <usermodal src="consultarempleados.empleadoseleccionado"></usermodal>
+      </div>
+    </div>
 </div>
+<div class="modal fade" id="empleadomodal" tabindex="-1"
+   role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal"
+                  aria-hidden="true">&times;</button>
+                  <h4 class="modal-title" id="myModalLabel">{{consultardatosempleado.empleadoseleccionado.nombres+" "+consultardatosempleado.empleadoseleccionado.apellidos}}</h4>
+              </div>
+
+                  <div class="modal-body row">
+                       <div class="col-md-6">
+                           <img class="img-responsive" src="https://childrenandarmedconflict.un.org/wp-content/plugins/all-in-one-seo-pack-pro/images/default-user-image.png"alt="">
+                      </div>
+                      <div class="col-md-6">
+                          <strong>Cedula: </strong>
+                          {{consultardatosempleado.empleadoseleccionado.ci}}</br>
+                          <strong>Fecha de nacimiento: </strong>
+                          {{consultardatosempleado.empleadoseleccionado.fecha_nac|date:'dd-MM-yyyy'}}</br>
+                          <strong>Año de ingreso a ITBS: </strong>
+                         {{consultardatosempleado.empleadoseleccionado.fecha_ing|date:'dd-MM-yyyy'}}</br>
+                          <strong>Direccion: </strong>
+                          {{consultardatosempleado.empleadoseleccionado.direccion| lowercase}}</br>
+                          <strong>Telefono: </strong>
+                          {{consultardatosempleado.empleadoseleccionado.telefono}}</br>
+                          <strong>Correo ITBS: </strong>
+                          {{consultardatosempleado.empleadoseleccionado.correo_e | lowercase}}</br>
+                          <strong>Correo personal: </strong>
+                          {{consultardatosempleado.getUser().correoPersonal}}</br>
+                          <strong>Persona de contacto: </strong>
+                          {{consultardatosempleado.empleadoseleccionado.avisar_a}} ({{consultardatosempleado.empleadoseleccionado.telf_contact}})</br>
+                          <strong>Datos del vehiculo: </strong>
+                          Modelo: {{consultardatosempleado.getUser().modeloVehiculo}}, Año: {{consultardatosempleado.getUser().anoVehiculo}}, Color: {{consultardatosempleado.getUser().colorVehiculo}}, Placa: {{consultardatosempleado.getUser().placaVehiculo}} 
+                      </div>
+
+
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-primary"
+                      data-dismiss="modal">Cerrar</button>
+                  </div>
+          </div>
+      </div>

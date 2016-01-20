@@ -18,7 +18,6 @@
             } else {
             	self.messages.error.push('Usuario o contraseña inválido');
             }
-              $('#Mymodal').modal('show');
         };
     }
 
