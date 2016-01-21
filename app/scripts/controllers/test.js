@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name intranetFrontEndApp.controller:NewuserCtrl
+ * @name intranetFrontEndApp.controller:TestCtrl
  * @description
- * # NewuserCtrl
+ * # TestCtrl
  * Controller of the intranetFrontEndApp
  */
 angular.module('intranetFrontEndApp')
-  .controller('NewuserCtrl', function () {
+  .controller('TestCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

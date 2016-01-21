@@ -1,13 +1,23 @@
 'use strict';
 
 (function() {
-    angular.module('intranetFrontEndApp').service('UserService', ['$http', 'BASE_URL', UserService]);
+    angular.module('intranetFrontEndApp').service('UserService', ['$http', 'BASE_URL','$location', UserService]);
 
-    function UserService($http, BASE_URL) {
+    function UserService($http, BASE_URL,$location) {
         var userLogged = false; // Not using rootScope because this object will be a singleton by definition
         var userProfile={};
         var Users=[];
         var User=[];
+        var possibleEmails=[];
+
+        self=this;
+
+        this.getPosibleEmails=function(){
+           $http.get(BASE_URL+'/usuarios/emailnotinuse').success(function (data){
+                          possibleEmails=data;
+            });
+
+        }
 
 
         this.getUser=function(userEmail){
@@ -28,7 +38,7 @@
             var getProfile=function(){
                 var MyData=[];
                 $http.get(BASE_URL + '/usuarios/perfil?$expand=Rol').success(function(data){                    
-                    userProfile=data[0];                   
+                    userProfile=data[0]; 
                 });                
             };
 
@@ -41,12 +51,15 @@
 	         			'Bearer ' + res.data.access_token;
 	         		// Setting user logged for all application
                     userLogged = true;
+                    $('#loadModal').modal('hide');
+                    $location.path( "/" );
 
         		}
         	};
 
         	var error = function()	 {
         		messages.error.push('Usuario o contraseña inválido');
+
         	};
         	$http({
         		method: 'post',
@@ -68,21 +81,27 @@
         };
 
         this.getUsers=function(){
-
             $http.get(BASE_URL + '/usuarios').success(function (data){
-
                 Users=data;
             });
         };
 
-        this.updateUser=function(user, messages){
+        this.updateUser=function(user,employee, messages){
+          $('#loadModal').modal('show'); 
 
             var success = function(data) {
                     messages.success.push('Informacion del usuario modificada con exito');
+                    $('#loadModal').modal('hide'); 
             };
 
             var error = function(msg,code)   {
-                     messages.error.push(msg);
+                     console.log(msg);
+                     messages.error.push(msg.data.message);
+                     if(message==="Authorization has been denied for this request."){
+                        userLogged = false;
+                        $location.path( "/" );
+                     }
+                     $('#loadModal').modal('hide'); 
             };
 
             var req = {
@@ -90,16 +109,54 @@
                     url: BASE_URL+'/usuarios/update',
                     data: { 
                          rol:user.rol,
-                         correo: user.correo,
+                         correo_e: user.correo,
                          modeloVehiculo: user.modeloVehiculo,
                          colorVehiculo:  user.colorVehiculo,
                          anoVehiculo:    user.anoVehiculo,
                          placaVehiculo:  user.placaVehiculo,
-                         correoPersonal: user.correoPersonal}
+                         correoPersonal: user.correoPersonal,
+                         telefono:       employee.telefono+" - "+employee.telefonoCelular,
+                         avisar_a:       employee.avisar_a,
+                         telf_contact:   employee.telf_contact,
+                         direccion:      employee.direccion
+                     }
                      };
             $http(req).then(success,error);
 
         }
+
+
+
+         this.createUser=function(email,newusername,messages){
+          $('#loadModal').modal('show'); 
+
+            var success = function(data) {
+                    email="";
+                    messages.success.push('Usuario creado con exito');
+                    $('#loadModal').modal('hide'); 
+            };
+
+            var error = function(msg,code)   {
+                     console.log(msg);
+                     $('#loadModal').modal('hide'); 
+                      messages.error.push(msg.data.Message);
+            };
+
+            var req = {
+                    method: 'POST',
+                    url: BASE_URL+'/usuarios/create',
+                    data: { 
+                         rol:{
+                            nombre: "Empleado"
+                         },
+                          usename: newusername,
+                          correo:email
+                     }
+                     };
+            $http(req).then(success,error);
+
+        }
+
 
 
         this.isUserLogged = function() {
@@ -121,6 +178,10 @@
         this.getUserProfile=function(){
             return User;
         };
+
+        this.getPosibleEmailsList=function(){
+          return possibleEmails;
+        }
 
       }
     })();

@@ -25,7 +25,7 @@ angular
         controllerAs: 'main',
          access: {
             requiredPermissions: [],
-            requireLogin:false
+            requireLogin:true
         }
       })
       .when('/consultardatosempleado', {
@@ -98,6 +98,15 @@ angular
         access: {
              requiredPermissions: [],
              requireLogin:false
+        }
+      })
+      .when('/crearuser', {
+        templateUrl: 'views/crearuser.html',
+        controller: 'CrearuserCtrl',
+        controllerAs: 'crearuser',
+        access: {
+             requiredPermissions: ['Administrador'],
+             requireLogin:true
         }
       })
       .otherwise({

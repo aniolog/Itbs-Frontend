@@ -13,7 +13,6 @@ function ConsultardatosempleadoCtrl(empleadoService,userService){
   this.empleadoseleccionado={}
 
   this.getUser=function(){
-    console.log(userService.getUserProfile());
     return userService.getUserProfile();
   }
 

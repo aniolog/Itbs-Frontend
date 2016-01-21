@@ -17,7 +17,9 @@ function MainCtrl($scope,userService,empleadoService){
 	}
 
 	this.init=function(){
+		empleadoService.getDatosEmpleado();
 		empleadoService.getEmpleados();
+	
 	}
 
 	this.user=function(){

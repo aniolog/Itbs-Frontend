@@ -12,7 +12,9 @@ angular.module('intranetFrontEndApp').controller('ActualizardatospersonalesCtrl'
 function ActualizardatospersonalesCtrl($scope,empleadoService,userService,MessagesFactory){
 
 	var self = this;
-    self.user = $scope.usuario;
+	self.empleado={};
+    self.user = userService.getUserData();
+    self.empleado=empleadoService.getEmpleado();
 
 	var showCarPanel=false;
 	var showContactPanel=true;
@@ -20,6 +22,7 @@ function ActualizardatospersonalesCtrl($scope,empleadoService,userService,Messag
 
 	this.init=function(){
 		empleadoService.getDatosEmpleado();
+		console.log(self.empleado);
 	}
 
 	this.carPanelsVisible= function(){
@@ -51,9 +54,10 @@ function ActualizardatospersonalesCtrl($scope,empleadoService,userService,Messag
 	}
 
 	this.submitForm=function(valid){
+		console.log(self.user);
 		self.user.rol=$scope.usuario.rol;
 		self.messages = MessagesFactory.createMessages();
-		userService.updateUser(self.user,self.messages);
+		userService.updateUser(self.user,self.empleado,self.messages);
 
 	}
 

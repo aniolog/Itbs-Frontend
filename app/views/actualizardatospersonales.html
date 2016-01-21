@@ -19,17 +19,20 @@
                     				 <div class="form-group">
                                     	 <label>Direccion</label>
                                    		 <input class="form-control" 
-                                         ng-value="actualizardatospersonales.getEmpleado().direccion" required >
+                                         ng-model="actualizardatospersonales.empleado.direccion"
+                                         ng-value="actualizardatospersonales.empleado.direccion" required >
                                      </div>
                                  	 <div class="form-group">
                                      	<label>Telefono</label>
                                      	<input type="text" class="form-control bfh-phone" 
-                                        ng-value="actualizardatospersonales.getEmpleado().telefono.split(' ')[0]"  required >
+                                        ng-model="actualizardatospersonales.empleado.telefono"
+                                        ng-value="actualizardatospersonales.empleado.telefono.split(' ')[0]"  required >
                                      </div>
                                       <div class="form-group">
                                         <label>Telefono celular</label>
                                         <input type="text" class="form-control bfh-phone" 
-                                        ng-value="actualizardatospersonales.getEmpleado().telefono.split(' ')[2]"  required >
+                                        ng-model="actualizardatospersonales.empleado.telefonoCelular"
+                                        ng-value="actualizardatospersonales.empleado.telefono.split(' ')[2]"  required >
                                      </div>
                                      <div class="form-group">
                                     	 <label>Correo Personal</label>
@@ -48,12 +51,14 @@
                                      <div class="form-group">
                                          <label>Nombre de la persona de contacto</label>
                                          <input class="form-control" 
-                                         ng-value="actualizardatospersonales.getEmpleado().avisar_a" required>
+                                         ng-model="actualizardatospersonales.empleado.avisar_a"
+                                         ng-value="actualizardatospersonales.empleado.avisar_a" required>
                                      </div>
                                      <div class="form-group">
                                         <label>Telefono de la persona de contacto</label>
                                         <input type="text" class="form-control bfh-phone" 
-                                        ng-value="actualizardatospersonales.getEmpleado().telf_contact" required>
+                                        ng-model="actualizardatospersonales.empleado.telf_contact"
+                                        ng-value="actualizardatospersonales.empleado.telf_contact" required>
                                      </div>
                     </div>
          </div>
@@ -96,4 +101,5 @@
         </div>
     </div>
 </div>
+
 
