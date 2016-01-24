@@ -1,11 +1,12 @@
 
 <div class="row" ng-init="actualizardatosprofesionales.init()">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-6">
         <h1 class="page-header">Actualizar datos profesionales</h1>
     </div>
     <!-- /.col-md-8 col-md-offset-2 -->
 </div>
 
+<messages src="actualizardatosprofesionales.messages"></messages>
     <!-- /.container-fluid -->
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
@@ -48,7 +49,15 @@
                     </div>
                     <div id="Cursos">
                         <div class="panel-body">
-                               <div flow-init="{target: 'http://localhost:57559/api/certificados/create',singleFile: true}" flow-files-submitted="$flow.upload()" class="ng-scope"
+                               <div flow-init="{
+                               target: 'http://localhost:57559/api/certificados/create',
+                               singleFile: true,
+                                headers: {
+                               Authorization:actualizardatosprofesionales.getTocken()}
+                             }" 
+                               flow-files-submitted="$flow.upload()" flow-file-success="actualizardatosprofesionales.success()"
+                               flow-file-success="actualizardatosprofesionales.error()"
+                               class="ng-scope"
                                flow-file-added="!!{pdf:1}[$file.getExtension()]">
                                     <div class="drop" flow-drop="" ng-class="dropClass">
                                         <span class="btn btn-default" flow-btn="">Upload File
@@ -68,11 +77,10 @@
                                     </div>
                                   </div>
                                   <div class="btn-group">
-                                    <a class="btn btn-xs btn-danger" ng-click="file.cancel()">
+                                    <a class="btn btn-danger btn pull-right" ng-click="file.cancel()">
                                       Cancel
                                     </a>
                                   </div>
-                                    <button class="btn btn-success btn pull-right"  ng-click="actualizardatosprofesionales.click(file)">Guardar</button>
                                 </div><!-- end ngRepeat: file in $flow.files -->
                               </div>
                             </div>
