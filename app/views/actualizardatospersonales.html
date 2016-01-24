@@ -25,20 +25,15 @@
                                  	 <div class="form-group">
                                      	<label>Telefono</label>
                                      	<input type="text" class="form-control bfh-phone" 
+                                        mask="+99-999-9999999 - +99-999-9999999" 
+                                        placeholder="Telefono celular - Telefono de casa"
                                         ng-model="actualizardatospersonales.empleado.telefono"
-                                        ng-value="actualizardatospersonales.empleado.telefono.split(' ')[0]"  required >
-                                     </div>
-                                      <div class="form-group">
-                                        <label>Telefono celular</label>
-                                        <input type="text" class="form-control bfh-phone" 
-                                        ng-model="actualizardatospersonales.empleado.telefonoCelular"
-                                        ng-value="actualizardatospersonales.empleado.telefono.split(' ')[2]"  required >
+                                        required >
                                      </div>
                                      <div class="form-group">
                                     	 <label>Correo Personal</label>
                                     	 <input class="form-control"  name="newemail" type="email" 
-                                         ng-model="actualizardatospersonales.user.correoPersonal"
-                                         ng-value="actualizardatospersonales.user.correoPersonal" required >
+                                         ng-model="actualizardatospersonales.user.correoPersonal" required >
                                      </div>
                                   
                    </div>
@@ -56,9 +51,9 @@
                                      </div>
                                      <div class="form-group">
                                         <label>Telefono de la persona de contacto</label>
-                                        <input type="text" class="form-control bfh-phone" 
-                                        ng-model="actualizardatospersonales.empleado.telf_contact"
-                                        ng-value="actualizardatospersonales.empleado.telf_contact" required>
+                                        <input type="text" class="form-control bfh-phone"
+                                        mask="9999-9999999"  
+                                        ng-model="actualizardatospersonales.empleado.telf_contact" required>
                                      </div>
                     </div>
          </div>

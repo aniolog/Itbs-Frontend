@@ -7,19 +7,24 @@
 
    angular.module('intranetFrontEndApp')
    .controller('IndexCtrl', 
-    ['$scope', '$cookieStore', 'UserService','$rootScope','$location', IndexCtrl]);
+    ['$scope', '$cookieStore', 'UserService','$rootScope','$location','EmpleadoService', IndexCtrl]);
 
-   function IndexCtrl($scope, $cookieStore, userService ,$rootScope,$location) {
+   function IndexCtrl($scope, $cookieStore, userService ,$rootScope,$location,empleadoService) {
     $scope.usuario={};
+    $scope.empleado={}
+    $scope.message={};
     
+   $scope.modalShow=function(){
+      $('#usermodal').modal('show');
+      $scope.empleado=empleadoService.getEmpleado();
+    };
 
-    
 
     $scope.userData=function(){
       return userService.getUserData();
     };
 
-     $scope.isUserLogged = function() {
+    $scope.isUserLogged = function() {
        var result=userService.isUserLogged() && userService.isProfileLoaded();
        if(result){
         $scope.usuario= userService.getUserData();
@@ -27,10 +32,10 @@
        return result;
      }
 
-     $scope.logout=function(){
+    $scope.logout=function(){
           $location.path( "/login" );
           return userService.logout();
-       }
+      }
 
 
      $rootScope.$on( "$routeChangeStart", function(event, next, current) {

@@ -13,15 +13,14 @@ function ActualizardatospersonalesCtrl($scope,empleadoService,userService,Messag
 
 	var self = this;
 	self.empleado={};
-    self.user = userService.getUserData();
-    self.empleado=empleadoService.getEmpleado();
 
 	var showCarPanel=false;
 	var showContactPanel=true;
 	var showUserPanel=true;
 
 	this.init=function(){
-		empleadoService.getDatosEmpleado();
+		self.user =  jQuery.extend(true, {}, userService.getUserData());    
+        self.empleado= jQuery.extend(true, {}, empleadoService.getEmpleado());
 		console.log(self.empleado);
 	}
 
@@ -54,10 +53,12 @@ function ActualizardatospersonalesCtrl($scope,empleadoService,userService,Messag
 	}
 
 	this.submitForm=function(valid){
+
 		console.log(self.user);
 		self.user.rol=$scope.usuario.rol;
+		$scope.message= MessagesFactory.createMessages();
 		self.messages = MessagesFactory.createMessages();
-		userService.updateUser(self.user,self.empleado,self.messages);
+		userService.updateUser(self.user,self.empleado,self.messages,$scope.message);
 
 	}
 

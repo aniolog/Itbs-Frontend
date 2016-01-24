@@ -51,14 +51,14 @@
 
                   <div class="modal-body row">
                        <div class="col-md-6">
-                           <img class="img-responsive" src="https://childrenandarmedconflict.un.org/wp-content/plugins/all-in-one-seo-pack-pro/images/default-user-image.png"alt="">
+                           <img class="img-responsive center-block" src="https://childrenandarmedconflict.un.org/wp-content/plugins/all-in-one-seo-pack-pro/images/default-user-image.png"alt="">
                       </div>
                       <div class="col-md-6">
                           <strong>Cedula: </strong>
                           {{consultardatosempleado.empleadoseleccionado.ci}}</br>
                           <strong>Fecha de nacimiento: </strong>
                           {{consultardatosempleado.empleadoseleccionado.fecha_nac|date:'dd-MM-yyyy'}}</br>
-                          <strong>Año de ingreso a ITBS: </strong>
+                          <strong>Fecha de ingreso a ITBS: </strong>
                          {{consultardatosempleado.empleadoseleccionado.fecha_ing|date:'dd-MM-yyyy'}}</br>
                           <strong>Direccion: </strong>
                           {{consultardatosempleado.empleadoseleccionado.direccion| lowercase}}</br>
@@ -70,8 +70,8 @@
                           {{consultardatosempleado.getUser().correoPersonal}}</br>
                           <strong>Persona de contacto: </strong>
                           {{consultardatosempleado.empleadoseleccionado.avisar_a}} ({{consultardatosempleado.empleadoseleccionado.telf_contact}})</br>
-                          <strong>Datos del vehiculo: </strong>
-                          Modelo: {{consultardatosempleado.getUser().modeloVehiculo}}, Año: {{consultardatosempleado.getUser().anoVehiculo}}, Color: {{consultardatosempleado.getUser().colorVehiculo}}, Placa: {{consultardatosempleado.getUser().placaVehiculo}} 
+                          <strong>Datos del vehiculo: </strong><span>
+                          Modelo: {{consultardatosempleado.getUser().modeloVehiculo}}, Año: {{consultardatosempleado.getUser().anoVehiculo}}, Color: {{consultardatosempleado.getUser().colorVehiculo}}, Placa: {{consultardatosempleado.getUser().placaVehiculo}} </span>
                       </div>
 
 

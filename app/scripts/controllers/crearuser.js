@@ -14,6 +14,7 @@ function CrearuserCtrl(userService,MessagesFactory){
 	self=this;
 	self.email="";
 	self.username="";
+	self.rol="";
 
 	self.init=function(){
 			userService.getPosibleEmails();
@@ -25,7 +26,7 @@ function CrearuserCtrl(userService,MessagesFactory){
 
     self.submitForm=function(valid){
     	self.messages = MessagesFactory.createMessages();
-    	userService.createUser(self.email,self.username,self.messages);
+    	userService.createUser(self.email,self.username,self.rol,self.messages);
 
 
     }

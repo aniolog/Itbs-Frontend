@@ -5,7 +5,7 @@
               <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal"
                   aria-hidden="true">&times;</button>
-                  <h4 class="modal-title" id="myModalLabel">{{consultardatosempleado.empleadoseleccionado.nombre+" "+consultardatosempleado.empleadoseleccionado.apellido}}</h4>
+                  <h4 class="modal-title" id="myModalLabel">{{empleado.nombres+" "+empleado.apellidos}}</h4>
               </div>
 
                   <div class="modal-body row">
@@ -14,23 +14,21 @@
                       </div>
                       <div class="col-md-6">
                           <strong>Cedula: </strong>
-                          {{usuario.nombre}}</br>
+                          {{empleado.ci}}</br>
                           <strong>Fecha de nacimiento: </strong>
-                          {{consultardatosempleado.empleadoseleccionado.datos}}</br>
-                          <strong>Año de ingreso a la empresa: </strong>
-                          {{consultardatosempleado.empleadoseleccionado.datos}}</br>
+                          {{empleado.fecha_nac|date:'dd-MM-yyyy'}}</br>
+                          <strong>Fecha de ingreso a ITBS: </strong>
+                          {{empleado.fecha_ing|date:'dd-MM-yyyy'}}</br>
                           <strong>Direccion: </strong>
-                          {{consultardatosempleado.empleadoseleccionado.datos}}</br>
-                          <strong>Telefono de casa: </strong>
-                          {{consultardatosempleado.empleadoseleccionado.datos}}</br>
-                          <strong>Telefono movil: </strong>
-                          {{consultardatosempleado.empleadoseleccionado.datos}}</br>
+                          {{empleado.direccion}}</br>
+                          <strong>Telefono: </strong>
+                          {{empleado.telefono}}</br>
                           <strong>Correo ITBS: </strong>
                           {{usuario.correo}}</br>
                           <strong>Correo personal: </strong>
                           {{usuario.correoPersonal}}</br>
                           <strong>Persona de contacto: </strong>
-                          {{consultardatosempleado.empleadoseleccionado.datos}}|{{consultardatosempleado.empleadoseleccionado.datos}}</br>
+                          {{empleado.avisar_a}} ({{empleado.telf_contact}})</br>
                           <strong>Datos del vehiculo: </strong>
                           Modelo: {{usuario.modeloVehiculo}}, Año: {{usuario.anoVehiculo}}, Color: {{usuario.colorVehiculo}}, Placa: {{usuario.placaVehiculo}} 
                       </div>

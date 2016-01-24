@@ -11,5 +11,10 @@ angular.module('intranetFrontEndApp')
     return {
       templateUrl: 'views/usermodal.html',
       restrict: 'E',
-      scope: {usuario: '=src'}}
+      scope: {
+      	usuario: '=src',
+      	empleado: '=emp'
+  		}
+
+  }
   });

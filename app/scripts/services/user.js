@@ -32,13 +32,20 @@
               var userData={};
         };
 
+        this.getProfile=function(){
+           $http.get(BASE_URL + '/usuarios/perfil?$expand=Rol').success(function(data){                    
+                    userProfile=data[0]; 
+                });      
+        }
+
 
         this.login = function(user, messages) {
-
+             $('#loadModal').modal('show'); 
             var getProfile=function(){
                 var MyData=[];
                 $http.get(BASE_URL + '/usuarios/perfil?$expand=Rol').success(function(data){                    
                     userProfile=data[0]; 
+                     $('#loadModal').modal('hide'); 
                 });                
             };
 
@@ -51,13 +58,14 @@
 	         			'Bearer ' + res.data.access_token;
 	         		// Setting user logged for all application
                     userLogged = true;
-                    $('#loadModal').modal('hide');
                     $location.path( "/" );
+                    $('#loadModal').modal('hide');
 
         		}
         	};
 
         	var error = function()	 {
+             $('#loadModal').modal('hide'); 
         		messages.error.push('Usuario o contraseña inválido');
 
         	};
@@ -81,23 +89,26 @@
         };
 
         this.getUsers=function(){
+           $('#loadModal').modal('show'); 
             $http.get(BASE_URL + '/usuarios').success(function (data){
                 Users=data;
+                 $('#loadModal').modal('hide'); 
             });
         };
 
-        this.updateUser=function(user,employee, messages){
+        this.updateUser=function(user,employee, messages,indexmessages){
           $('#loadModal').modal('show'); 
 
             var success = function(data) {
-                    messages.success.push('Informacion del usuario modificada con exito');
+                    indexmessages.success.push('Informacion del usuario modificada con exito');
+                    $location.path("/");
                     $('#loadModal').modal('hide'); 
             };
 
             var error = function(msg,code)   {
                      console.log(msg);
                      messages.error.push(msg.data.message);
-                     if(message==="Authorization has been denied for this request."){
+                     if(msg.data.message==="Authorization has been denied for this request."){
                         userLogged = false;
                         $location.path( "/" );
                      }
@@ -115,7 +126,7 @@
                          anoVehiculo:    user.anoVehiculo,
                          placaVehiculo:  user.placaVehiculo,
                          correoPersonal: user.correoPersonal,
-                         telefono:       employee.telefono+" - "+employee.telefonoCelular,
+                         telefono:       employee.telefono,
                          avisar_a:       employee.avisar_a,
                          telf_contact:   employee.telf_contact,
                          direccion:      employee.direccion
@@ -127,7 +138,7 @@
 
 
 
-         this.createUser=function(email,newusername,messages){
+         this.createUser=function(email,newusername,role,messages){
           $('#loadModal').modal('show'); 
 
             var success = function(data) {
@@ -147,7 +158,7 @@
                     url: BASE_URL+'/usuarios/create',
                     data: { 
                          rol:{
-                            nombre: "Empleado"
+                            nombre: role
                          },
                           usename: newusername,
                           correo:email
