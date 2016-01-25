@@ -15,9 +15,15 @@ angular.module('intranetFrontEndApp')
 function ActualizardatosprofesionalesCtrl($location,$scope,certificadoservice,MessagesFactory,$http){
 	var self=this;
 	self.action="";
-	self.curso={};
-	self.curso.user=$scope.usuario;
 	self.messages={};
+
+	self.curso={};
+	self.estudio={};
+	self.experiencia={};
+	self.proyecto={};
+	
+	
+
 
 	self.init=function(){
 		console.log($location.search());
@@ -41,7 +47,24 @@ function ActualizardatosprofesionalesCtrl($location,$scope,certificadoservice,Me
 	self.getTocken=function(){
 		return $http.defaults.headers.common['Authorization'];
 	}
+
+	self.submitcourse=function(valid){
+		self.curso.user=$scope.usuario;
+		console.log(self.curso);
+	}
 	
+	self.submitstudy=function(valid){
+		self.estudio.user=$scope.usuario;
+		console.log(self.estudio);
+	}
+	self.submitexp=function(valid){
+		self.experiencia.user=$scope.usuario;
+		console.log(self.experiencia);
+	}
+	self.submitproyect=function(){
+		self.proyecto.user=$scope.usuario;
+		console.log(self.proyecto);
+	}
 	
 
 

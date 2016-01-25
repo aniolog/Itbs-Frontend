@@ -7,9 +7,9 @@
  * # ActualizardatospersonalesCtrl
  * Controller of the intranetFrontEndApp
  */
-angular.module('intranetFrontEndApp').controller('ActualizardatospersonalesCtrl',['$scope','EmpleadoService','UserService','MessagesFactory',ActualizardatospersonalesCtrl]);
+angular.module('intranetFrontEndApp').controller('ActualizardatospersonalesCtrl',['$scope','EmpleadoService','UserService','MessagesFactory','$http',ActualizardatospersonalesCtrl]);
 
-function ActualizardatospersonalesCtrl($scope,empleadoService,userService,MessagesFactory){
+function ActualizardatospersonalesCtrl($scope,empleadoService,userService,MessagesFactory,$http){
 
 	var self = this;
 	self.empleado={};
@@ -61,5 +61,17 @@ function ActualizardatospersonalesCtrl($scope,empleadoService,userService,Messag
 		userService.updateUser(self.user,self.empleado,self.messages,$scope.message);
 
 	}
+	self.getTocken=function(){
+		return $http.defaults.headers.common['Authorization'];
+	}
 
+self.success=function(){
+		
+		self.messages = MessagesFactory.createMessages();
+		self.messages.success.push('Imagen enviada con exito');
+	}
+	self.error=function(){
+		self.messages = MessagesFactory.createMessages();
+		self.messages.error.push('Imagen no pudo ser enviada');
+	}
 }
