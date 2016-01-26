@@ -21,7 +21,7 @@
 
 
         this.getUser=function(userEmail){
-            $http.get(BASE_URL+'/usuarios/'+userEmail+'/').success(function (data){
+            $http.get(BASE_URL+'/usuarios/'+userEmail+'/?$expand=Rol').success(function (data){
                 User=data[0];
             });
         };
@@ -90,7 +90,7 @@
 
         this.getUsers=function(){
            $('#loadModal').modal('show'); 
-            $http.get(BASE_URL + '/usuarios').success(function (data){
+            $http.get(BASE_URL + '/usuarios?$expand=Rol').success(function (data){
                 Users=data;
                  $('#loadModal').modal('hide'); 
             });

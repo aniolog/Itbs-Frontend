@@ -13,6 +13,7 @@ function ConsultardatosempleadoCtrl(empleadoService,userService){
   this.empleadoseleccionado={}
 
   this.getUser=function(){
+   userService.getUserProfile();
     return userService.getUserProfile();
   }
 
@@ -25,7 +26,7 @@ function ConsultardatosempleadoCtrl(empleadoService,userService){
   }
 
   this.setempleado=function(empleado){
-   userService.getUser(empleado.correo_e);
+    userService.getUser(empleado.correo_e);
    this.empleadoseleccionado=empleado;
   }
 

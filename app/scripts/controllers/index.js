@@ -7,9 +7,9 @@
 
    angular.module('intranetFrontEndApp')
    .controller('IndexCtrl', 
-    ['$scope', '$cookieStore', 'UserService','$rootScope','$location','EmpleadoService', IndexCtrl]);
+    ['$scope', '$cookieStore', 'UserService','$rootScope','$location','EmpleadoService','vacacionesService', IndexCtrl]);
 
-   function IndexCtrl($scope, $cookieStore, userService ,$rootScope,$location,empleadoService) {
+   function IndexCtrl($scope, $cookieStore, userService ,$rootScope,$location,empleadoService,vacacionesService) {
     $scope.usuario={};
     $scope.empleado={}
     $scope.message={};
@@ -36,6 +36,15 @@
           $location.path( "/login" );
           return userService.logout();
       }
+
+    $scope.getTop3vacationRequest=function(){
+      console.log(vacacionesService.GetTop3RequestsData().length==0);
+      return vacacionesService.GetTop3RequestsData();
+    }
+
+     $scope.isTop3Loading=function(){
+      return vacacionesService.isTop3Loading();
+    }
 
 
      $rootScope.$on( "$routeChangeStart", function(event, next, current) {

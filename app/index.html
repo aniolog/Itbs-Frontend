@@ -73,50 +73,58 @@
                     <a class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-sun-o fa-fw"></i>  <i class="fa fa-caret-down "></i>
                     </a>
-                    <!-- /.Solicitudes de vacaciones -->
-                    <ul class="dropdown-menu dropdown-tasks">
+                    
+                    <ul class="dropdown-menu dropdown-tasks" ng-show="isTop3Loading()">
                         <li>
-                            <a href="#">
+                            <a>
                                 <div>
                                     <p>
-                                        <strong>Solicitud 1</strong>
+                                        <h4 class="text-center"><strong>Cargando Solicitudes</strong></h4>
+                                        <div>
+                                            <div class="progress progress-striped">
+                                                <div class="progress-bar progress-bar-striped active" 
+                                                role="progressbar" aria-valuenow="40" aria-valuemin="0" 
+                                                aria-valuemax="100" style="width: 100%">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="dropdown-menu dropdown-tasks " ng-show="getTop3vacationRequest().length==0 && !isTop3Loading()">
+                        <li>
+                            <a>
+                                <div>
+                                    <p>
+                                        <h4 class="text-center"><strong>No he realizado solicitudes de vacaciones</strong></h4>
+
+
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="text-center" ng-href="#/solicitarvacaciones">
+                                <strong>Realizar solicitud de vacaciones</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.Solicitudes de vacaciones -->
+                    <ul class="dropdown-menu dropdown-tasks" ng-show="getTop3vacationRequest().length>0">
+                        <li>
+                            <a href="#" ng-repeat="req in getTop3vacationRequest()">
+                                <div>
+                                    <p>
+                                        <strong>Solicitud {{req.ticket_id}}</strong>
                                         <span class="pull-right text-muted"><div><strong>Desde:</strong>01/01/2001 </br><strong>Hasta:</strong>02/02/2002</div></span>
                                     </p>
                                     <div class="progress progress-striped">
                                         <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
-                                          Aceptada
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <p>
-                                        <strong>Solicitud 2</strong>
-                                        <span class="pull-right text-muted"><div><strong>Desde:</strong>03/03/2003 </br><strong>Hasta:</strong>04/04/2004</div></span>
-                                    </p>
-                                    <div class="progress progress-striped active">
-                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
-                                          En proceso
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <p>
-                                        <strong>Solicitud 3</strong>
-                                        <span class="pull-right text-muted"><div><strong>Desde:</strong>05/05/2005 </br><strong>Hasta:</strong>06/06/2006</div></span>
-                                    </p>
-                                    <div class="progress progress-striped active">
-                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
-                                            Rechazada
+                                          {{req.status}}
                                         </div>
                                     </div>
                                 </div>
@@ -312,6 +320,8 @@
 
    
     <script src="scripts/services/certificadoservice.js"></script>
+    <script src="scripts/services/vacaciones.js"></script>
+    <script src="scripts/services/informacionprofesional.js"></script>
     <!-- endbuild -->
 </body>
 

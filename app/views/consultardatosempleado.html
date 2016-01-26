@@ -51,7 +51,8 @@
 
                   <div class="modal-body row">
                        <div class="col-md-6">
-                           <img class="img-responsive center-block" src="https://childrenandarmedconflict.un.org/wp-content/plugins/all-in-one-seo-pack-pro/images/default-user-image.png"alt="">
+
+                           <img class="img-responsive center-block" ng-src="http://localhost:490/temp/fotos/{{consultardatosempleado.getUser().foto}}"alt="">
                       </div>
                       <div class="col-md-6">
                           <strong>Cedula: </strong>
@@ -71,7 +72,9 @@
                           <strong>Persona de contacto: </strong>
                           {{consultardatosempleado.empleadoseleccionado.avisar_a}} ({{consultardatosempleado.empleadoseleccionado.telf_contact}})</br>
                           <strong>Datos del vehiculo: </strong><span>
-                          Modelo: {{consultardatosempleado.getUser().modeloVehiculo}}, Año: {{consultardatosempleado.getUser().anoVehiculo}}, Color: {{consultardatosempleado.getUser().colorVehiculo}}, Placa: {{consultardatosempleado.getUser().placaVehiculo}} </span>
+                          Modelo: {{consultardatosempleado.getUser().modeloVehiculo}}, Año: {{consultardatosempleado.getUser().anoVehiculo}}, Color: {{consultardatosempleado.getUser().colorVehiculo}}, Placa: {{consultardatosempleado.getUser().placaVehiculo}} 
+                          {{consultardatosempleado.getUser().foto}}
+                        </span>
                       </div>
 
 

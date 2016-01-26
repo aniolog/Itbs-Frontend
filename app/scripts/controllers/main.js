@@ -8,9 +8,9 @@
  * Controller of the intranetFrontEndApp
  */
 angular.module('intranetFrontEndApp')
-  .controller('MainCtrl',  ['$scope', 'UserService','EmpleadoService', MainCtrl]);
+  .controller('MainCtrl',  ['$scope', 'UserService','EmpleadoService','vacacionesService', MainCtrl]);
 
-function MainCtrl($scope,userService,empleadoService){
+function MainCtrl($scope,userService,empleadoService,vacacionesService){
 
 	this.getEmpleados=function(){
 		return empleadoService.getEmpleadosList();
@@ -20,6 +20,7 @@ function MainCtrl($scope,userService,empleadoService){
 		userService.getProfile();
 		empleadoService.getDatosEmpleado();
 		empleadoService.getEmpleados();
+		vacacionesService.GetTop3Requests();
 	
 	}
 
