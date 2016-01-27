@@ -12,7 +12,22 @@ angular.module('intranetFrontEndApp').service('vacacionesService', ['$http','BAS
 function VacacionesService($http,BASE_URL){
 	var self=this;
 	self.top3requests=[];
-	self.loadingRequests=false;
+	self.requests=[];
+	self.loadingTop3Requests=false;
+	self.count=0;
+
+
+	self.GetCount=function(){
+
+		var error=function(data){
+			self.count=0
+		}
+		var success=function(data){
+			self.count=data.data;
+		}
+
+		$http.get(BASE_URL + '/vacaciones/count').then(success,error)
+	}
 
 
 	self.GetTop3Requests=function(){
@@ -21,17 +36,20 @@ function VacacionesService($http,BASE_URL){
 		self.top3requests=[];
 
 		var error=function(data){
-				self.loadingRequests=false;
-				console.log(self.loadingRequests);
+				self.loadingTop3Requests=false;
 
 
 		}
 		var success=function(response){
 				self.top3requests=response.data;
-				self.loadingRequests=false;
+				self.loadingTop3Requests=false;
 
 		}
 		 $http.get(BASE_URL + '/vacaciones?$top=3').then(success,error)
+
+	}
+
+	self.GetRequest=function(){
 
 	}
 
@@ -42,8 +60,11 @@ function VacacionesService($http,BASE_URL){
 	}
 
 	self.isTop3Loading=function(){
-		console.log('me llamaron');
 		return self.loadingTop3Requests;
+	}
+
+	self.GetRequestCount=function(){
+		return self.count;
 	}
 
 

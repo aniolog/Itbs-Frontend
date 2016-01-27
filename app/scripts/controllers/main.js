@@ -20,13 +20,19 @@ function MainCtrl($scope,userService,empleadoService,vacacionesService){
 		userService.getProfile();
 		empleadoService.getDatosEmpleado();
 		empleadoService.getEmpleados();
-		vacacionesService.GetTop3Requests();
+		vacacionesService.GetCount();
+		
 	
 	}
 
 	this.user=function(){
 		return userService.getUserData();
 	}
+
+	this.GetVacationRequestCount=function(){
+		return vacacionesService.GetRequestCount();
+	};
+
 
 
 }

@@ -37,9 +37,21 @@
           return userService.logout();
       }
 
+    $scope.requestClass=function(status){  
+    console.log(status);   
+    if((status==="Esperando Aprobacion del Supervisor")||(status=="En espera por Aprobacion")){
+      return ["progress-bar progress-bar-warning","width: 100%"];
+    }/*else if (status==="w"){
+      return "progress-bar progress-bar-success";}
+    return  {clase:"progress-bar progress-bar-danger",progreso:"width: 100%",titulo:"Rechazada"};*/
+        };
+
+
     $scope.getTop3vacationRequest=function(){
-      console.log(vacacionesService.GetTop3RequestsData().length==0);
       return vacacionesService.GetTop3RequestsData();
+    }
+    $scope.top3Request=function(){
+      vacacionesService.GetTop3Requests();
     }
 
      $scope.isTop3Loading=function(){

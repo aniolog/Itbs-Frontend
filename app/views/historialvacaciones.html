@@ -1,15 +1,14 @@
 
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Historial de vacaciones</h1>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-        </div>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Historial de vacaciones</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+<!-- /.row -->
+</div>
         <!-- /.container-fluid -->
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12" ng-show="true">
                 <div class="panel panel-default">
                     <!-- /.panel-heading -->
                     <div class="panel-body">
@@ -48,6 +47,15 @@
                     </div>
                     <!-- /.panel-body -->
                 </div>
-                <!-- /.panel -->
-            </div>
-            <!-- /.col-lg-12 -->
+                <div class="pull-right">
+                                <button class="btn btn-default btn-md" type="button" ng-disabled="historialvacaciones.currentPage==1"
+                                ng-click="historialvacaciones.prevPage()">Anterior</button>
+                                <span>Pagina {{historialvacaciones.currentPage}} de {{historialvacaciones.totalItems()}}</span>
+                                 <button class="btn btn-default btn-md" type="button" ng-disabled="curPage == 0"
+                                ng-click="historialvacaciones.forwPage()">Siguiente</button>
+                </div>
+
+            </div>  
+        </div>
+          </br>
+            </br>

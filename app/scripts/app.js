@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ngMask',
-    'flow'
+    'flow',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider) {
     $routeProvider
