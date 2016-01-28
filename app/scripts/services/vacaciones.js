@@ -49,7 +49,24 @@ function VacacionesService($http,BASE_URL){
 
 	}
 
-	self.GetRequest=function(){
+	self.GetRequest=function(pageSize,pageNumber){
+
+		$('#loadModal').modal('show');
+		var skip=pageSize*(pageNumber-1);
+		var reqUrl=BASE_URL + '/vacaciones?$top='+pageSize+'&$skip='+skip;
+		console.log(reqUrl);
+
+		var error=function(data){
+			  	$('#loadModal').modal('hide');
+		}
+		var success=function(response){
+				self.requests=response.data;
+				console.log(response);
+				$('#loadModal').modal('hide');
+
+		}
+		 $http.get(reqUrl).then(success,error)
+		
 
 	}
 
@@ -65,6 +82,10 @@ function VacacionesService($http,BASE_URL){
 
 	self.GetRequestCount=function(){
 		return self.count;
+	}
+
+	self.GetRequestData=function(){
+		return self.requests;
 	}
 
 

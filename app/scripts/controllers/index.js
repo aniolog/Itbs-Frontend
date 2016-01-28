@@ -37,14 +37,13 @@
           return userService.logout();
       }
 
-    $scope.requestClass=function(status){  
-    console.log(status);   
+    $scope.requestClass=function(status){   
     if((status==="Esperando Aprobacion del Supervisor")||(status=="En espera por Aprobacion")){
       return ["progress-bar progress-bar-warning","width: 100%"];
-    }/*else if (status==="w"){
-      return "progress-bar progress-bar-success";}
-    return  {clase:"progress-bar progress-bar-danger",progreso:"width: 100%",titulo:"Rechazada"};*/
-        };
+    }else if (status==="Vacaciones Aprobadas"){
+      console.log('entre')
+       return ["progress-bar progress-bar-success","width: 100%"];}
+        }
 
 
     $scope.getTop3vacationRequest=function(){

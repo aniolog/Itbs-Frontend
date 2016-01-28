@@ -13,45 +13,41 @@ function HistorialvacacionesCtrl(vacacionesService,$scope) {
 
   var self=this;
  
-  self.currentPage=1;
-  self.totalPage=0;
+  self.currentPage=5;
+  self.pageSize=10;
   $scope.Math=Math;
 
-    self.solicitudes=[
-        {id:1,fechaInicio:"01/01/2001",fechaFin:"02/02/2002",status:1},
-        {id:2,fechaInicio:"01/01/2003",fechaFin:"02/02/2004",status:0},
-        {id:3,fechaInicio:"01/01/2005",fechaFin:"02/02/2006",status:-1},
-        {id:3,fechaInicio:"01/01/2005",fechaFin:"02/02/2006",status:-1},
-        {id:3,fechaInicio:"01/01/2005",fechaFin:"02/02/2006",status:-1},
-        {id:3,fechaInicio:"01/01/2005",fechaFin:"02/02/2006",status:-1},
-        {id:3,fechaInicio:"01/01/2005",fechaFin:"02/02/2006",status:-1},
-        {id:3,fechaInicio:"01/01/2005",fechaFin:"02/02/2006",status:-1},
-        {id:3,fechaInicio:"01/01/2005",fechaFin:"02/02/2006",status:-1},
-        {id:3,fechaInicio:"01/01/2005",fechaFin:"02/02/2006",status:-1},
-        {id:3,fechaInicio:"01/01/2005",fechaFin:"02/02/2006",status:-1},
-        {id:3,fechaInicio:"01/01/2005",fechaFin:"02/02/2006",status:-1},
-        {id:3,fechaInicio:"01/01/2007",fechaFin:"02/02/2008",status:1}
-    ];
-
-
     self.init=function(){
+      console.log('sdasd');
       vacacionesService.GetCount();
+       self.pageChanged();
     }
-     self.totalItems=function(){
-     
-      self.totalPage= Math.floor(2/7)+1 ;
-      return vacacionesService.GetRequestCount();
+    self.update=function(){
+          self.currentPage=1;
+        self.pageChanged();
+    }
+     self.totalPage=function(){
+        var returner=Math.floor(vacacionesService.GetRequestCount()/self.pageSize);
+        var mod=(vacacionesService.GetRequestCount()%self.pageSize) ;
+        return (returner>0) ?  returner:returner+1 ;
+
      }
 
     self.pageChanged=function(){
-      console.log(self.currentPage);
+      vacacionesService.GetRequest(self.pageSize,self.currentPage);
     }
 
     self.prevPage=function(){
       self.currentPage--;
+      self.pageChanged();
     }
     self.forwPage=function(){
       self.currentPage++;
+      self.pageChanged();
+    }
+
+    self.getRequests=function(){
+      return vacacionesService.GetRequestData();
     }
 
     self.htmldef=function(reqstatus){

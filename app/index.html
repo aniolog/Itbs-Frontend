@@ -122,7 +122,6 @@
                                     <p>
                                         <strong>Solicitud {{req.ticket_id}}</strong>
                                         <span class="pull-right text-muted"><div><strong>Desde:</strong>{{req.fecha_Inicio|date:'dd-MM-yyyy'}} </br><strong>Hasta:</strong>{{req.fecha_Fin|date:'dd-MM-yyyy'}}</div></span>
-                                        {{req.status}}
                                     </p>
                                     <div class="progress progress-striped active">
                                         <div class={{requestClass(req.status)[0]}}
