@@ -9,10 +9,10 @@
  */
 angular.module('intranetFrontEndApp')
 .controller('ActualizardatosprofesionalesCtrl',
-	['$location','$scope','certificadoservice','MessagesFactory','$http',ActualizardatosprofesionalesCtrl]);
+	['$location','$scope','MessagesFactory','$http','informacionprofesional',ActualizardatosprofesionalesCtrl]);
 
 
-function ActualizardatosprofesionalesCtrl($location,$scope,certificadoservice,MessagesFactory,$http){
+function ActualizardatosprofesionalesCtrl($location,$scope,MessagesFactory,$http,informacionprofesional){
 	var self=this;
 	self.action="";
 	self.messages={};
@@ -50,6 +50,9 @@ function ActualizardatosprofesionalesCtrl($location,$scope,certificadoservice,Me
 
 	self.submitcourse=function(valid){
 		self.curso.user=$scope.usuario;
+		self.messages = MessagesFactory.createMessages();
+		console.log(self.messages);
+		informacionprofesional.submitCourse(self.curso,self.messages);
 		console.log(self.curso);
 	}
 	

@@ -7,9 +7,9 @@
 
    angular.module('intranetFrontEndApp')
    .controller('IndexCtrl', 
-    ['$scope', '$cookieStore', 'UserService','$rootScope','$location','EmpleadoService','vacacionesService', IndexCtrl]);
+    ['$scope', 'UserService','$rootScope','$location','EmpleadoService','vacacionesService', IndexCtrl]);
 
-   function IndexCtrl($scope, $cookieStore, userService ,$rootScope,$location,empleadoService,vacacionesService) {
+   function IndexCtrl($scope, userService ,$rootScope,$location,empleadoService,vacacionesService) {
     $scope.usuario={};
     $scope.empleado={}
     $scope.message={};
@@ -38,11 +38,13 @@
       }
 
     $scope.requestClass=function(status){   
-    if((status==="Esperando Aprobacion del Supervisor")||(status=="En espera por Aprobacion")){
-      return ["progress-bar progress-bar-warning","width: 100%"];
-    }else if (status==="Vacaciones Aprobadas"){
-      console.log('entre')
-       return ["progress-bar progress-bar-success","width: 100%"];}
+        if((status==="Esperando Aprobacion del Supervisor")||(status=="En espera por Aprobacion")){
+          return ["progress-bar progress-bar-warning","width: 100%"];
+           }
+        else if (status==="Vacaciones Aprobadas"){
+          return ["progress-bar progress-bar-success","width: 100%"];
+          }
+           return ["progress-bar progress-bar-danger","width: 100%"];
         }
 
 
@@ -83,6 +85,7 @@
 
        });
 
+   
 
 
   }

@@ -13,8 +13,8 @@ function HistorialvacacionesCtrl(vacacionesService,$scope) {
 
   var self=this;
  
-  self.currentPage=5;
-  self.pageSize=10;
+  self.currentPage=1;
+  self.pageSize=5;
   $scope.Math=Math;
 
     self.init=function(){

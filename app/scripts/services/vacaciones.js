@@ -29,7 +29,6 @@ function VacacionesService($http,BASE_URL){
 		$http.get(BASE_URL + '/vacaciones/count').then(success,error)
 	}
 
-
 	self.GetTop3Requests=function(){
 
 		self.loadingTop3Requests=true;
@@ -46,15 +45,13 @@ function VacacionesService($http,BASE_URL){
 
 		}
 		 $http.get(BASE_URL + '/vacaciones?$top=3').then(success,error)
-
 	}
 
 	self.GetRequest=function(pageSize,pageNumber){
-
-		$('#loadModal').modal('show');
 		var skip=pageSize*(pageNumber-1);
 		var reqUrl=BASE_URL + '/vacaciones?$top='+pageSize+'&$skip='+skip;
 		console.log(reqUrl);
+		$('#loadModal').modal('show');
 
 		var error=function(data){
 			  	$('#loadModal').modal('hide');
@@ -66,10 +63,26 @@ function VacacionesService($http,BASE_URL){
 
 		}
 		 $http.get(reqUrl).then(success,error)
-		
-
 	}
 
+	self.PostRequest=function(request,message){
+		console.log(request);
+		var success=function(data){
+			console.log(data.data);
+			message.success.push("Solicitud creada con exito, id del ticket:"+data.data);
+		}
+
+		var error=function(data){
+			message.error.push(data.data.Message);
+		}
+		var req = {
+                    method: 'POST',
+                    url: BASE_URL+'/vacaciones/create',
+                    data:request
+                    };
+          console.log(req);
+       $http(req).then(success,error);
+	}
 
 	self.GetTop3RequestsData=function(){
 

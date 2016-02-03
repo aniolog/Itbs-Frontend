@@ -1,1 +1,58 @@
-<p>This is the solicitarvacaciones view.</p>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Registrar solicitud de vacaciones</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<messages src="solicitarvacaciones.message"></messages>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+
+                <form ng-submit="solicitarvacaciones.submit($form.valid)">
+                            <div class="panel panel-primary" 
+                            ng-show="true">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a>
+                                                Solicitud de vacaciones
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="Cursos">
+                                        <div class="panel-body">
+                                              
+                                            <div class="form-group">
+
+                                                    <label>Fecha de inicio*</label>
+                                                  	<div>
+                                                      <input type="date" class="form-control" 
+                                                     		placeholder="Fecha de inicio" 
+                                                      	ng-model="solicitarvacaciones.solicitud.fecha_Inicio"
+                                                     		required>
+                                                   	</div>
+                                            </div>
+
+                                             <div class="form-group">
+                                                     <label>Duracion (Dias)*</label>
+                                                     <input class="form-control" 
+                                                     ng-model="solicitarvacaciones.solicitud.duracion"
+                                                     placeholder="Duracion de las vacaciones solicitadas" 
+                                                     mask="99999999999999999999"
+                                                     required>
+                                              </div>
+                                              <div class="form-group">
+                                                     <label>Observacion*</label>
+                                                     <input class="form-control" 
+                                                     ng-model="solicitarvacaciones.solicitud.observacion"
+                                                     placeholder="Observacion de la solicitud" 
+                                                     required>
+                                              </div>
+                                        </div>
+                                    </div>
+                               </div>
+                                <button  ng-show="true"
+                                class="btn btn-success pull-right btn-md"  type="submit">Enviar</button>
+                </form>
+      </div>
+</div>
+

@@ -43,6 +43,8 @@ module.exports = function(config) {
       'bower_components/ngMask/dist/ngMask.js',
       'bower_components/flow.js/dist/flow.js',
       'bower_components/ng-flow/dist/ng-flow.js',
+      'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+      'bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.min.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

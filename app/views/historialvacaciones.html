@@ -16,7 +16,7 @@
                             <div class="col-md-1 pull-right">
                                 <select class="form-control" ng-model="historialvacaciones.pageSize" 
                                 ng-change="historialvacaciones.update()">
-                                    <option selected value="5">5</option>
+                                    <option selected="selected" value="5">5</option>
                                     <option value="10">10</option>
                                     <option value="20">20</option>
                                 </select>
@@ -37,12 +37,12 @@
                                         <td>{{solicitud.fecha_Inicio|date:'dd-MM-yyyy'}}</td>
                                         <td>{{solicitud.fecha_Fin|date:'dd-MM-yyyy'}}</td>
                                         <td>
-                                            <div class="progress progress-striped active">
-                                                <div class={{requestClass(solicitud.status)[0]}}
+                                            <div class="progress">
+                                                <div class={{requestClass(solicitud.estatus)[0]}}
                                                 role="progressbar" aria-valuenow="60" aria-valuemin="0"
                                                 aria-valuemax="100"
                                                 style={{historialvacaciones.htmldef(solicitud.status).progreso}}>
-                                                {{solicitud.status}}
+                                                {{solicitud.estatus}}
                                                 </div>
                                             </div>
                                         </td>

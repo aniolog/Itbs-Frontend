@@ -40,7 +40,7 @@
 
 
         this.login = function(user, messages) {
-             $('#loadModal').modal('show'); 
+           //  $('#loadModal').modal('show'); 
             var getProfile=function(){
                 var MyData=[];
                 $http.get(BASE_URL + '/usuarios/perfil?$expand=Rol').success(function(data){                    
@@ -59,13 +59,14 @@
 	         		// Setting user logged for all application
                     userLogged = true;
                     $location.path( "/" );
-                    $('#loadModal').modal('hide');
+                 
+                   $('#loadModal').modal('hide');
 
         		}
         	};
 
         	var error = function()	 {
-             $('#loadModal').modal('hide'); 
+            $('#loadModal').modal('hide'); 
         		messages.error.push('Usuario o contraseña inválido');
 
         	};
@@ -92,7 +93,7 @@
            $('#loadModal').modal('show'); 
             $http.get(BASE_URL + '/usuarios?$expand=Rol').success(function (data){
                 Users=data;
-                 $('#loadModal').modal('hide'); 
+                $('#loadModal').modal('hide'); 
             });
         };
 
@@ -102,7 +103,7 @@
             var success = function(data) {
                     indexmessages.success.push('Informacion del usuario modificada con exito');
                     $location.path("/");
-                    $('#loadModal').modal('hide'); 
+                 $('#loadModal').modal('hide'); 
             };
 
             var error = function(msg,code)   {
@@ -112,7 +113,7 @@
                         userLogged = false;
                         $location.path( "/" );
                      }
-                     $('#loadModal').modal('hide'); 
+              $('#loadModal').modal('hide'); 
             };
 
             var req = {
@@ -144,12 +145,12 @@
             var success = function(data) {
                     email="";
                     messages.success.push('Usuario creado con exito');
-                    $('#loadModal').modal('hide'); 
+                $('#loadModal').modal('hide'); 
             };
 
             var error = function(msg,code)   {
                      console.log(msg);
-                     $('#loadModal').modal('hide'); 
+                  $('#loadModal').modal('hide'); 
                       messages.error.push(msg.data.Message);
             };
 

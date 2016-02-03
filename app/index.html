@@ -10,21 +10,24 @@
     <meta name="author" content="">
 
     <title>I T B S - Intranet</title>
+    <script src="bower_components/angular/angular.js"></script>
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css">
+    <link href="../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css">
+  
+
 </head>
 
-<body ng-app="intranetFrontEndApp" ng-controller="IndexCtrl">
+<body ng-app="intranetFrontEndApp" ng-controller="IndexCtrl" class="page">
 
     <div ng-hide="isUserLogged()">
             <login></login>
     </div>
 
     
-    <div id="wrapper" class="header" ng-show="isUserLogged()">
+    <div id="wrapper" class="header" ng-show="isUserLogged()" >
 
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -69,7 +72,7 @@
                     <!-- /.dropdown-user -->
                 </li>
                  <!-- /.dropdown -->
-                <li class="dropdown">
+                <li class="dropdown" >
                     <a class="dropdown-toggle" data-toggle="dropdown" ng-click="top3Request()">
                         <i class="fa fa-sun-o fa-fw"></i>  <i class="fa fa-caret-down "></i>
                     </a>
@@ -123,11 +126,11 @@
                                         <strong>Solicitud {{req.ticket_id}}</strong>
                                         <span class="pull-right text-muted"><div><strong>Desde:</strong>{{req.fecha_Inicio|date:'dd-MM-yyyy'}} </br><strong>Hasta:</strong>{{req.fecha_Fin|date:'dd-MM-yyyy'}}</div></span>
                                     </p>
-                                    <div class="progress progress-striped active">
-                                        <div class={{requestClass(req.status)[0]}}
+                                    <div class="progress">
+                                        <div class={{requestClass(req.estatus)[0]}}
                                          role="progressbar" aria-valuenow="40" aria-valuemin="0" 
                                          aria-valuemax="100" style={{requestClass(req.status)[1]}}>
-                                          {{req.status}}
+                                          {{req.estatus}}
 
                                         </div>
                                     </div>
@@ -211,7 +214,7 @@
                             <a href="#"><i class="fa fa-sun-o fa-fw"></i> Gestion de control <span class="fa arrow"></span> de vacaciones</a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a ng-href="#/solicitatvacaciones">Solicitar vacaciones</a>
+                                    <a ng-href="#/solicitarvacaciones">Solicitar vacaciones</a>
                                 </li>
                                 <li>
                                     <a ng-href="#/historialvacaciones">Ver historial de solicitudes de vacaciones</a>
@@ -244,7 +247,7 @@
         <usermodal src="usuario" emp="empleado"></usermodal>
         <!-- Page Content -->
 
-        <div id="page-wrapper" ng-view="">
+        <div id="page-wrapper" ng-view=""  >
 
         </div>
 
@@ -282,7 +285,6 @@
     <script src="../dist/js/sb-admin-2.js"></script>
 
 
-    <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
@@ -292,10 +294,11 @@
     <script src='bower_components/ngMask/dist/ngMask.min.js'></script>
     <script src='bower_components/flow.js/dist/flow.min.js'></script>
     <script src='bower_components/ng-flow/dist/ng-flow-standalone.js'></script>
-    <script src='bower_components/ng-flow/dist/ng-flow-min.js'></script>
+    <script src='bower_components/ng-flow/dist/ng-flow.min.js'></script>
     <script src='bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js'></script>
     <script src='bower_components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.es.min.js'></script>
-    <script src='bower_components/angular-bootstrap/ui-bootstrap-tpls.js'></script>
+    <script src='bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.min.js'></script>
+
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>

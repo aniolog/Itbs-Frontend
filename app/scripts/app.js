@@ -11,14 +11,12 @@
 angular
   .module('intranetFrontEndApp', [
     'ngAnimate',
-    'ngCookies',
     'ngResource',
     'ngRoute',
     'ngSanitize',
     'ngTouch',
     'ngMask',
-    'flow',
-    'ui.bootstrap'
+    'flow'
   ])
   .config(function ($routeProvider) {
     $routeProvider
