@@ -52,7 +52,15 @@
                   <div class="modal-body row">
                        <div class="col-md-6">
 
-                           <img class="img-responsive center-block" ng-src="http://localhost:490/temp/fotos/{{consultardatosempleado.getUser().foto}}"alt="">
+                           <img class="img-responsive center-block"\
+                            ng-src="http://localhost:490/temp/fotos/{{consultardatosempleado.getUser().foto}}"
+                            alt=""
+                            ng-show="consultardatosempleado.getUser().foto.length"
+                            >
+
+                         <img class="img-responsive" 
+                         src="https://childrenandarmedconflict.un.org/wp-content/plugins/all-in-one-seo-pack-pro/images/default-user-image.png"alt=""
+                         ng-hide="consultardatosempleado.getUser().foto.length">
                       </div>
                       <div class="col-md-6">
                           <strong>Cedula: </strong>

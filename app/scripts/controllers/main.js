@@ -21,7 +21,7 @@ function MainCtrl($scope,userService,empleadoService,vacacionesService){
 		empleadoService.getDatosEmpleado();
 		empleadoService.getEmpleados();
 		vacacionesService.GetCount();
-		
+		empleadoService.getCount();
 	
 	}
 
@@ -32,6 +32,12 @@ function MainCtrl($scope,userService,empleadoService,vacacionesService){
 	this.GetVacationRequestCount=function(){
 		return vacacionesService.GetRequestCount();
 	};
+
+	this.getEmpleadosCount=function(){
+		return empleadoService.getEmpleadosCount();
+	}
+
+
 
 
 

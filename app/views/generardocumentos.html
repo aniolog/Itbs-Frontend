@@ -1,76 +1,89 @@
 
-              <div class="row">
-                  <div class="col-lg-12">
-                      <h1 class="page-header">Generar documentos</h1>
-                  </div>
-                  <!-- /.col-lg-12 -->
-              </div>
-              <!-- /.row -->
-          </div>
-          <!-- /.container-fluid -->
-          <div class="row">
-              <div class="col-lg-12">
-                  <div class="panel panel-default">
-                      <!-- /.panel-heading -->
-                      <div class="panel-body">
-                          <div class="dataTable_wrapper" >
+<div class="row" ng-init="generardocumentos.init()">
+    <div class="col-lg-12">
+        <h1 class="page-header">Generar documentos</h1>
+    </div>
+</div>
+<!-- /.row -->
+</div>
+<!-- /.container-fluid -->
+<div class="row">
+<div class="col-lg-12">
+<div class="panel panel-default">
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+        <div class="dataTable_wrapper" >
 
-                              <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                  <thead>
-                                      <tr>
-                                          <th>Cedula</th>
-                                          <th>Nombre</th>
-                                          <th>Apellido</th>
-                                          <th>Acciones</th>
-                                      </tr>
-                                  </thead>
-                                  <tbody ng-repeat="empleado in generardocumentos.empleados">
-                                      <tr>
-                                          <td>{{empleado.cedula}}</td>
-                                          <td>{{empleado.nombre}}</td>
-                                          <td>{{empleado.apellido}}</td>
-                                          <td >
-                                            <button class="btn btn-success " data-toggle="modal" data-target="#Mymodal" ng-click="generardocumentos.setempleado(empleado)">
-                                              Ver documentos
-                                            </button>
+            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                    <tr>
+                        <th>Cedula</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="empleado in generardocumentos.getEmpledos()">
+                    <tr>
+                        <td>{{empleado.ci}}</td>
+                        <td>{{empleado.nombres}}</td>
+                        <td>{{empleado.apellidos}}</td>
+                        <td >
+                          <button class="btn btn-success " data-toggle="modal" data-target="#Mymodal" 
+                          ng-click="generardocumentos.setSelectedEmpleado(empleado)">
+                            Ver documentos
+                          </button>
 
-                                          </td>
-                                      </tr>
+                        </td>
+                    </tr>
 
-                                  </tbody>
-                              </table>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="modal fade" id="Mymodal" tabindex="-1"
-                   role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                          <div class="modal-content">
-                              <div class="modal-header">
-                                  <button type="button" class="close" data-dismiss="modal"
-                                  aria-hidden="true">&times;</button>
-                                  <h4 class="modal-title" id="myModalLabel">{{generardocumentos.empleadoseleccionado.nombre+" "+generardocumentos.empleadoseleccionado.apellido}}</h4>
-                              </div>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+<div class="modal fade" id="Mymodal" tabindex="-1"
+ role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">{{generardocumentos.selectedEmpleado.nombres+" "+generardocumentos.selectedEmpleado.apellidos}}</h4>
+            </div>
 
-                                  <div class="modal-body row">
-                                       <div class="col-md-6">
-                                           <img class="img-responsive" src="https://childrenandarmedconflict.un.org/wp-content/plugins/all-in-one-seo-pack-pro/images/default-user-image.png"alt="">
-                                      </div>
-                                      <div class="col-md-6  pull-right">
-                                        <div class="btn-group-vertical">
-                                          <button type="button" data-dismiss="modal" class="btn btn-success  btn-lg btn-block">Referencia personal</button></br>
-                                          <button type="button" data-dismiss="modal" class="btn btn-info  btn-lg btn-block">Curriculum Vitae</button></br>
-                                          <button type="button" data-dismiss="modal" class="btn btn-warning  btn-lg btn-block">Constancia de trabajo</button>
-                                      </div>
-                                      </div>
+                <div class="modal-body row">
+                     <div class="col-md-6">
+                         <img class="img-responsive" 
+                         src="https://childrenandarmedconflict.un.org/wp-content/plugins/all-in-one-seo-pack-pro/images/default-user-image.png"alt=""
+                         ng-hide="generardocumentos.getUserPhoto().length">
+
+                         <img class="img-responsive" 
+                         ng-src="{{generardocumentos.getPhotoUrl()+generardocumentos.getUserPhoto()}}"
+                         alt=""
+                         ng-show="generardocumentos.getUserPhoto().length">
+                    </div>
+                    <div class="col-md-6  pull-right">
+                      <div class="btn-group-vertical">
+                        <button type="button" 
+                        data-dismiss="modal" 
+                        class="btn btn-info  btn-lg btn-block"
+                        >Curriculum Vitae</button></br>
+
+                        <button type="button" 
+                        data-dismiss="modal" 
+                        class="btn btn-warning  btn-lg btn-block"
+                        ng-click="generardocumentos.ctClick()">Constancia de trabajo</button>
+                    </div>
+                    </div>
 
 
-                                  </div>
-                                  <div class="modal-footer">
-                                      <button type="button" class="btn btn-primary"
-                                      data-dismiss="modal">Cerrar</button>
-                                  </div>
-                          </div>
-                      </div>
-                  </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary"
+                    data-dismiss="modal">Cerrar</button>
+                </div>
+        </div>
+    </div>
+</div>

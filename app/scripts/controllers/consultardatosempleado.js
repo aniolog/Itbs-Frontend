@@ -7,9 +7,9 @@
  * # ConsultardatosempleadoCtrl
  * Controller of the intranetFrontEndApp
  */
-angular.module('intranetFrontEndApp').controller('ConsultardatosempleadoCtrl',['EmpleadoService','UserService',ConsultardatosempleadoCtrl]);
+angular.module('intranetFrontEndApp').controller('ConsultardatosempleadoCtrl',['EmpleadoService','UserService','MEDIA_URL',ConsultardatosempleadoCtrl]);
 
-function ConsultardatosempleadoCtrl(empleadoService,userService){
+function ConsultardatosempleadoCtrl(empleadoService,userService,MEDIA_URL){
   this.empleadoseleccionado={}
 
   this.getUser=function(){
@@ -29,5 +29,10 @@ function ConsultardatosempleadoCtrl(empleadoService,userService){
     userService.getUser(empleado.correo_e);
    this.empleadoseleccionado=empleado;
   }
+
+   this.getPhotoUrl=function(){
+    return MEDIA_URL+"/fotos/";
+  }
+
 
 }

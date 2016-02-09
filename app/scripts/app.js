@@ -34,7 +34,7 @@ angular
         controller: 'ConsultardatosempleadoCtrl',
         controllerAs: 'consultardatosempleado',
         access: {
-            requiredPermissions: ['Administrador','Recursos Humanos'],
+            requiredPermissions: ['Administrador','RecursosHumanos'],
             requireLogin:true
         }
       })
@@ -43,7 +43,7 @@ angular
         controller: 'ActualizardatospersonalesCtrl',
         controllerAs: 'actualizardatospersonales',
         access: {
-            requiredPermissions: ['Administrador','Recursos Humanos','Empleado'],
+            requiredPermissions: ['Administrador','RecursosHumanos','Empleado'],
             requireLogin:true
         }
       })
@@ -52,7 +52,7 @@ angular
         controller: 'ActualizardatosprofesionalesCtrl',
         controllerAs: 'actualizardatosprofesionales',
         access: {
-             requiredPermissions: ['Administrador','Recursos Humanos','Empleado'],
+             requiredPermissions: ['Administrador','RecursosHumanos','Empleado'],
              requireLogin:true
         }
       })
@@ -61,7 +61,7 @@ angular
         controller: 'SolicitarvacacionesCtrl',
         controllerAs: 'solicitarvacaciones',
         access: {
-             requiredPermissions: ['Administrador','Recursos Humanos','Empleado'],
+             requiredPermissions: ['Administrador','RecursosHumanos','Empleado'],
              requireLogin:true
         }
       })
@@ -70,7 +70,7 @@ angular
         controller: 'HistorialvacacionesCtrl',
         controllerAs: 'historialvacaciones',
         access: {
-             requiredPermissions: ['Administrador','Recursos Humanos','Empleado'],
+             requiredPermissions: ['Administrador','RecursosHumanos','Empleado'],
              requireLogin:true
         }
       })
@@ -79,7 +79,7 @@ angular
         controller: 'HistorialpagosCtrl',
         controllerAs: 'historialpagos',
         access: {
-             requiredPermissions: ['Administrador','Recursos Humanos','Empleado'],
+             requiredPermissions: ['Administrador','RecursosHumanos','Empleado'],
              requireLogin:true
         }
       })

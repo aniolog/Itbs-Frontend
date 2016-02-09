@@ -10,25 +10,45 @@
 angular.module('intranetFrontEndApp').service('EmpleadoService',['$http', 'BASE_URL',EmpleadoService]);
 
 function EmpleadoService($http,BASE_URL){
-	var Empleado={};
-	var Empleados=[];
+	var self=this;
+	self.Empleado={};
+	self.Empleados=[];
+	self.Count=0;
 
-	this.getDatosEmpleado=function(){
+
+	self.getDatosEmpleado=function(){
 		 $http.get(BASE_URL + '/empleados/perfil?$select=nombres,apellidos,ci,fecha_nac,fecha_ing,direccion,telefono,avisar_a,telf_contact').success(function(data){
-		 	Empleado=data[0];
+		 	self.Empleado=data[0];
 		 });
 	}
-	this.getEmpleados=function(){
+	self.getEmpleados=function(){
 		 $http.get(BASE_URL + '/empleados/?$select=nombres,apellidos,ci,fecha_nac,fecha_ing,direccion,telefono,avisar_a,telf_contact,correo_e').success(function(data){
-		 	Empleados=data;
+		 	self.Empleados=data;
 		 });
 	}
 
-	this.getEmpleado=function(){
-		return Empleado;};
+	self.getCount=function(){
 
-	this.getEmpleadosList=function(){
-		return Empleados;
+		var success=function(data){
+			self.Count=data.data;
+		}
+		var error=function(data){
+			console.log(data);
+		}
+		$http.get(BASE_URL + '/empleados/count').then(success,error);
+	}
+
+
+	self.getEmpleadosCount=function(){
+		return self.Count;
+	}
+
+
+	self.getEmpleado=function(){
+		return self.Empleado;};
+
+	self.getEmpleadosList=function(){
+		return self.Empleados;
 	}
 		 
 	

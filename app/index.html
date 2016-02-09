@@ -175,7 +175,9 @@
                             <a><i class="fa fa-user fa-fw"></i> Perfil del empleado<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a ng-href="#/consultardatosempleado" ng-hide="usuario.rol.nombre!='Administrador'">Consultar datos de empleado</a>
+                                    <a ng-href="#/consultardatosempleado" 
+                                    ng-hide="usuario.rol.nombre!='Administrador' && usuario.rol.nombre!='RecursosHumanos' ">
+                                    Consultar datos de empleado</a>
                                 </li>
                                 <li>
                                     <a ng-href="#/actualizardatospersonales">Actualizar datos personales</a>
@@ -329,6 +331,7 @@
     <script src="scripts/services/certificadoservice.js"></script>
     <script src="scripts/services/vacaciones.js"></script>
     <script src="scripts/services/informacionprofesional.js"></script>
+    <script src="scripts/services/documentos.js"></script>
     <!-- endbuild -->
 </body>
 
